@@ -21,7 +21,8 @@ class BeneficiaryRepositoryImpl (
                 name = remoteBeneficiary.name,
                 campaignTitle =  remoteBeneficiary.campaignTitle,
                 campaignDescription = remoteBeneficiary.seoDescription,
-                photoThumbUrl = remoteBeneficiary.photoThumbUrl
+                photoThumbUrl = remoteBeneficiary.photoThumbUrl,
+                accountNumber = remoteBeneficiary.bankAccountNumber
             )
         }
     }

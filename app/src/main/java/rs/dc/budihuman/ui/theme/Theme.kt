@@ -13,8 +13,13 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
+import rs.dc.budihuman.R
 
 private val LightColors = lightColorScheme(
     primary = md_theme_light_primary,
@@ -81,7 +86,6 @@ private val DarkColors = darkColorScheme(
     scrim = md_theme_dark_scrim,
 )
 
-
 @Composable
 fun BudiHumanTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -109,7 +113,7 @@ fun BudiHumanTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = beHumanTypography,
         content = content
     )
 }

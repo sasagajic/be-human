@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -44,7 +45,8 @@ fun BeneficiaryListItemContent(
     imageUrl: String?,
     onSendSms: (String) -> Unit
 ) {
-    Column() {
+    Card(
+    ) {
         Row(modifier = Modifier.padding(all = 8.dp)){
             AsyncImage(
                 model = imageUrl,

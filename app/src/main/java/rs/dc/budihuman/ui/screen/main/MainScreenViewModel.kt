@@ -36,5 +36,25 @@ class MainScreenViewModel @Inject constructor(
         context.startActivity(intent)
     }
 
+    fun getPaymentInstructions(id: String): String {
+        beneficiaries.value?.find { it.id == id }?.let { beneficiary ->
+            return StringBuilder().append("K:PR|V:01|C:1")
+                .append("|")
+                .append("R:${beneficiary.accountNumber.replace("-", "")}")
+                .append("|")
+                .append("N:Budi Human - ${beneficiary.id} - ${beneficiary.name}")
+                .append("|")
+                .append("I:RSD1000,00")
+                .append("|")
+                .append("SF:289")
+                .append("|")
+                .append("S:${beneficiary.campaignTitle}")
+                .append("|")
+                .append("RO:${String.format("%06d", beneficiary.id.toInt())}-ipsqr")
+                .toString()
+        }
+
+        return ""
+    }
 }
 

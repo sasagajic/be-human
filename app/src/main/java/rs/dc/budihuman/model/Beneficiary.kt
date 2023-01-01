@@ -7,5 +7,6 @@ data class Beneficiary(
     val name: String,
     val campaignTitle: String,
     val campaignDescription: String,
-    val photoThumbUrl: String?
+    val photoThumbUrl: String?,
+    val accountNumber: String
 )

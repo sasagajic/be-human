@@ -2,6 +2,8 @@ package rs.dc.budihuman.ui.screen.main
 
 import android.content.Context
 import android.content.res.Configuration
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -9,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import rs.dc.budihuman.model.Beneficiary
 import rs.dc.budihuman.ui.theme.BudiHumanTheme
@@ -23,6 +26,8 @@ fun MainScreen(context: Context, navController: NavController, viewModel: MainSc
     )
 
     viewModel.fetchBeneficiaries()
+
+
 }
 
 @Composable
@@ -30,9 +35,12 @@ fun BeneficiariesList(
     beneficiaries: List<Beneficiary>,
     onSendSms: (String) -> Unit
 ) {
-    LazyColumn {
+    LazyColumn(
+        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
         beneficiaries.map {  
-            item (key = it.id ) {
+            item (key = it.id) {
                 BeneficiaryListItemContent(
                     id = it.id,
                     title = it.campaignTitle,
@@ -58,9 +66,9 @@ fun MainScreenContentPreview() {
 
 
             val data = listOf(
-                Beneficiary(id = "1", group = "", active = 1, name = "", campaignTitle = "Title", campaignDescription = "Description", photoThumbUrl = "" ),
-                Beneficiary(id = "2", group = "", active = 1, name = "", campaignTitle = "Title", campaignDescription = "Description", photoThumbUrl = "" ),
-                Beneficiary(id = "3", group = "", active = 1, name = "", campaignTitle = "Title", campaignDescription = "Description", photoThumbUrl = "" )
+                Beneficiary(id = "1", group = "", active = 1, name = "", campaignTitle = "Title", campaignDescription = "Description", photoThumbUrl = "" , accountNumber = "" ),
+                Beneficiary(id = "2", group = "", active = 1, name = "", campaignTitle = "Title", campaignDescription = "Description", photoThumbUrl = "" , accountNumber = "" ),
+                Beneficiary(id = "3", group = "", active = 1, name = "", campaignTitle = "Title", campaignDescription = "Description", photoThumbUrl = "" , accountNumber = "" )
             )
 
             BeneficiariesList(beneficiaries = data, onSendSms = {})
