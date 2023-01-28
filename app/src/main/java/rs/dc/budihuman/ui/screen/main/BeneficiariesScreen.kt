@@ -2,7 +2,6 @@ package rs.dc.budihuman.ui.screen.main
 
 import android.content.Context
 import android.content.res.Configuration
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,7 +12,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.facebook.flipper.plugins.uidebugger.LogTag
 import rs.dc.budihuman.model.Beneficiary
 import rs.dc.budihuman.ui.theme.BudiHumanTheme
 

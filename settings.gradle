@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "Budi Human"
 include ':app'
 include ':testapp'
+include ':api'

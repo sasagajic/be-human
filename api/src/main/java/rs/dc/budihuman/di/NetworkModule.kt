@@ -1,8 +1,6 @@
 package rs.dc.budihuman.di
 
 import android.content.Context
-import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
-import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,8 +14,8 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import rs.dc.budihuman.BuildConfig
 import rs.dc.budihuman.api.BeHumanService
+import rs.inverse.behuman.api.BuildConfig
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -30,7 +28,7 @@ internal class NetworkModule {
     @Singleton
     @BaseUrlString
     fun provideBaseUrl(): String {
-        return BuildConfig.BASE_URL
+        return  BuildConfig.BASE_URL
     }
 
     @Provides
@@ -42,11 +40,10 @@ internal class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideClient(networkFlipperPlugin: NetworkFlipperPlugin, cache: Cache): OkHttpClient {
+    fun provideClient(cache: Cache): OkHttpClient {
         return OkHttpClient.Builder()
             .dispatcher(Dispatcher())
             .cache(cache)
-            .addNetworkInterceptor(FlipperOkhttpInterceptor(networkFlipperPlugin))
             .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(TIMEOUT, TimeUnit.SECONDS)

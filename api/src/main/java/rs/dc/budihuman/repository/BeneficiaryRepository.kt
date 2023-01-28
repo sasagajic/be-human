@@ -1,25 +1,25 @@
 package rs.dc.budihuman.repository
 
 import rs.dc.budihuman.api.BeHumanService
-import rs.dc.budihuman.model.Beneficiary as LocalBeneficiary
+import rs.dc.budihuman.model.Beneficiary
 
 interface BeneficiaryRepository {
-    suspend fun getBeneficiaries(): List<LocalBeneficiary>
+    suspend fun getBeneficiaries(): List<Beneficiary>
 }
 
-class BeneficiaryRepositoryImpl (
+class BeneficiaryRepositoryImpl(
     val service: BeHumanService
-): BeneficiaryRepository {
+) : BeneficiaryRepository {
 
-    override suspend fun getBeneficiaries(): List<LocalBeneficiary> {
+    override suspend fun getBeneficiaries(): List<Beneficiary> {
         val response = service.beneficiaries(page = 1, perPage = 1000)
         return response.data.map { remoteBeneficiary ->
-            LocalBeneficiary(
+            Beneficiary(
                 id = remoteBeneficiary.id,
                 group = remoteBeneficiary.group,
                 active = remoteBeneficiary.active,
                 name = remoteBeneficiary.name,
-                campaignTitle =  remoteBeneficiary.campaignTitle,
+                campaignTitle = remoteBeneficiary.campaignTitle,
                 campaignDescription = remoteBeneficiary.seoDescription,
                 photoThumbUrl = remoteBeneficiary.photoThumbUrl,
                 accountNumber = remoteBeneficiary.bankAccountNumber
